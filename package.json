@@ -6,23 +6,23 @@
   "repository": "https://github.com/antoinefricker/git-watcher.git",
   "author": "Antoine Fricker <antoine.fricker@gmail.com>",
   "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
+    "@types/shelljs": "^0.8.15",
+    "nodemon": "^3.1.4",
+    "shelljs": "^0.8.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },
   "scripts": {
     "build": "tsc",
     "dev": "nodemon --quiet --exec ts-node src/index.ts"
   },
-  "dependencies": {
-    "nodemon": "^3.1.4",
-    "ts-node": "^10.9.2"
-  },
   "nodemonConfig": {
     "ignore": [
       "**/dist/**",
       "**/notes/**",
       "**/node_modules/**"
-    ],
-    "delay": 2500
+    ]
   }
 }
