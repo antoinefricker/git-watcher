@@ -1,0 +1,28 @@
+{
+  "name": "git-watcher",
+  "version": "1.0.0",
+  "description": "A node git watcher intended to nurture better practices and its arduino deamon to make them real.",
+  "main": "src/index.ts",
+  "repository": "https://github.com/antoinefricker/git-watcher.git",
+  "author": "Antoine Fricker <antoine.fricker@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --quiet --exec ts-node src/index.ts"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/dist/**",
+      "**/notes/**",
+      "**/node_modules/**"
+    ],
+    "delay": 2500
+  }
+}
