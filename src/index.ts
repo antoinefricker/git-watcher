@@ -6,25 +6,39 @@ const main = async () => {
     arnaud.update();
 
     const port = new SerialPort({
-        path: '/dev/ttyACM1',
+        path: '/dev/tty.usbmodem1441201',
         dataBits: 8,
         parity: 'none',
         stopBits: 1,
         baudRate: 9600,
         autoOpen: false,
     });
-    port.on('open', (error) => {
+    port.on('open', async (error) => {
         if (error) {
             console.error('Error while opening port', error);
+
+            await SerialPort.list().then((ports) => {
+                const arduinoManufacturerRegEx = /Arduino/i;
+                console.log(
+                    'ports',
+                    ports.filter((port) =>
+                        arduinoManufacturerRegEx.test(port.manufacturer),
+                    ),
+                );
+            });
+
             return;
         }
-        const value = Math.floor(Math.random() * 11);
-        port.write(value.toFixed(0));
-        console.log(`Sending "${value}" to Arduino`);
     });
 
-    const parser = new ReadlineParser();
-    parser.on('data', console.log);
+    const parser = new ReadlineParser({ delimiter: '\n' });
+    parser.on('data', (data) => {
+        data = data.trim();
+        console.log('arduino>', data);
+        if (data === 'pingback') {
+            port.write(arnaud.emergency.toFixed(0));
+        }
+    });
     port.pipe(parser);
 
     port.open();
