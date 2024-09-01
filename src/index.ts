@@ -1,5 +1,4 @@
-import shell from "shelljs";
+import { GitWhiner } from './GitWhiner';
 
-shell.echo(
-  "Hello world!"
-);
+const arnaud = new GitWhiner();
+arnaud.update();

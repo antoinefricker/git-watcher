@@ -1,28 +1,29 @@
 {
-  "name": "git-watcher",
-  "version": "1.0.0",
-  "description": "A node git watcher intended to nurture better practices and its arduino deamon to make them real.",
-  "main": "src/index.ts",
-  "repository": "https://github.com/antoinefricker/git-watcher.git",
-  "author": "Antoine Fricker <antoine.fricker@gmail.com>",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-    "@types/shelljs": "^0.8.15",
-    "nodemon": "^3.1.4",
-    "shelljs": "^0.8.5",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
-  },
-  "scripts": {
-    "build": "tsc",
-    "dev": "nodemon --quiet --exec ts-node src/index.ts"
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "**/dist/**",
-      "**/notes/**",
-      "**/node_modules/**"
-    ]
-  }
+    "name": "git-watcher",
+    "version": "1.0.0",
+    "description": "A node git watcher intended to nurture better practices and its arduino deamon to make them real.",
+    "main": "src/index.ts",
+    "repository": "https://github.com/antoinefricker/git-watcher.git",
+    "author": "Antoine Fricker <antoine.fricker@gmail.com>",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "@types/shelljs": "^0.8.15",
+        "nodemon": "^3.1.4",
+        "shelljs": "^0.8.5",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.5.4"
+    },
+    "scripts": {
+        "build": "tsc",
+        "dev": "nodemon --quiet --exec ts-node src/index.ts"
+    },
+    "nodemonConfig": {
+        "delay": "500",
+        "ignore": [
+            "**/dist/**",
+            "**/notes/**",
+            "**/node_modules/**"
+        ]
+    }
 }
