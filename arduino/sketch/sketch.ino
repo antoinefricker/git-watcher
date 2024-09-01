@@ -22,7 +22,6 @@ void loop() {
     
     value = str.toInt();
     Serial.println(value);
-    
   }
 
   for (int i = 0; i < ledsNumber; i++) {
