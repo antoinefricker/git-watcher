@@ -5,8 +5,18 @@ const main = async () => {
     const arnaud = new GitWhiner();
     arnaud.update();
 
+    await SerialPort.list().then((ports) => {
+        const arduinoManufacturerRegEx = /Arduino/i;
+        console.log(
+            'ports',
+            ports.filter((port) =>
+                arduinoManufacturerRegEx.test(port.manufacturer),
+            ),
+        );
+    });
+
     const port = new SerialPort({
-        path: '/dev/tty.usbmodem1441201',
+        path: '/dev/ttyACM0',
         dataBits: 8,
         parity: 'none',
         stopBits: 1,
@@ -16,16 +26,6 @@ const main = async () => {
     port.on('open', async (error) => {
         if (error) {
             console.error('Error while opening port', error);
-
-            await SerialPort.list().then((ports) => {
-                const arduinoManufacturerRegEx = /Arduino/i;
-                console.log(
-                    'ports',
-                    ports.filter((port) =>
-                        arduinoManufacturerRegEx.test(port.manufacturer),
-                    ),
-                );
-            });
 
             return;
         }

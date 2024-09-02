@@ -17,8 +17,8 @@ export class GitWhiner {
     evaluate({ files, insertions, deletions }: DiffShortstatData): void {
         let emergency = 0;
         emergency += Math.floor(files / 4);
-        emergency += Math.floor(insertions / 40);
-        emergency += Math.floor(deletions / 60);
+        emergency += Math.floor(insertions / 35);
+        emergency += Math.floor(deletions / 45);
         emergency = Math.min(10, emergency);
         console.log(`emergency: ${emergency}`);
 

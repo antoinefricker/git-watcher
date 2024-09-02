@@ -1,9 +1,9 @@
 {
-    "name": "git-watcher",
+    "name": "git-whiner",
     "version": "1.0.0",
     "description": "A node git watcher intended to nurture better practices and its arduino deamon to make them real.",
     "main": "src/index.ts",
-    "repository": "https://github.com/antoinefricker/git-watcher.git",
+    "repository": "https://github.com/antoinefricker/git-whiner.git",
     "author": "Antoine Fricker <antoine.fricker@gmail.com>",
     "license": "MIT",
     "dependencies": {
