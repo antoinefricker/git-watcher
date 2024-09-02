@@ -1,4 +1,4 @@
-# git-watcher
+# git-whiner
 
 > A node git watcher intended to nurture better practices and its arduino evil materialization to make them real.
 
