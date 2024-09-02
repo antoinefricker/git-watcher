@@ -9,3 +9,8 @@
 `yarn dev`
 
 `yarn build`
+
+## arduino steps
+
+-   first board code demo
+    [![first board code demo](https://img.youtube.com/vi/EF2FVzAF1sc/0.jpg)](https://www.youtube.com/watch?v=EF2FVzAF1sc)
