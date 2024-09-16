@@ -10,6 +10,7 @@
         "@types/node": "^22.5.2",
         "@types/serialport": "^8.0.5",
         "@types/shelljs": "^0.8.15",
+        "inquirer": "^10.2.0",
         "nodemon": "^3.1.4",
         "serialport": "^12.0.0",
         "shelljs": "^0.8.5",
@@ -19,7 +20,8 @@
     "devDependencies": {},
     "scripts": {
         "build": "tsc",
-        "dev": "nodemon --quiet --exec ts-node src/index.ts"
+        "watch": "nodemon --quiet --exec ts-node ./src/gitWhiner.ts",
+        "monitor": "ts-node ./src/arduinoMonitor.ts"
     },
     "nodemonConfig": {
         "delay": "500",
