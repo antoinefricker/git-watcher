@@ -22,10 +22,13 @@ export class GitProxy {
             .split(',')
             .map((x: string) => parseInt(x));
 
-        return { files, insertions, deletions };
+        return {
+            files: files ?? 0,
+            insertions: insertions ?? 0,
+            deletions: deletions ?? 0,
+        };
     }
 }
-
 export type DiffShortstatData = {
     files: number;
     insertions: number;
