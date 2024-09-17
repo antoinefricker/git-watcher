@@ -1,6 +1,6 @@
 {
     "name": "git-whiner",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "private": false,
     "description": "A node git watcher intended to nurture better practices and its arduino deamon to make them real.",
     "keywords": [
