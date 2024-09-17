@@ -1,6 +1,6 @@
 {
     "name": "git-whiner",
-    "version": "0.2.0",
+    "version": "0.2.4",
     "private": false,
     "description": "A node git watcher intended to nurture better practices and its arduino deamon to make them real.",
     "keywords": [
@@ -32,7 +32,7 @@
     },
     "scripts": {
         "build": "tsc",
-        "publish": "yarn build && npm publish",
+        "publish-package": "yarn build && yarn publish",
         "typecheck": "tsc --noEmit",
         "watch": "nodemon --quiet --exec ts-node ./src/watch.ts",
         "monitor": "ts-node ./src/monitor.ts"
