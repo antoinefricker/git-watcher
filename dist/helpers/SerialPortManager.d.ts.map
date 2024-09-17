@@ -1,0 +1,1 @@
+{"version":3,"file":"SerialPortManager.d.ts","sourceRoot":"","sources":["../../src/helpers/SerialPortManager.ts"],"names":[],"mappings":"AAGA,qBAAa,iBAAiB;IAC1B,OAAO,CAAC,KAAK,CAAa;;IAG1B,QAAQ,CAAC,QAAQ,EAAE,MAAM,EAAE,cAAc,KAAA,GAAG,IAAI;IAkBhD,KAAK,CAAC,IAAI,EAAE,MAAM,GAAG,IAAI;CAO5B"}
