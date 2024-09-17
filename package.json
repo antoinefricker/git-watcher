@@ -1,6 +1,6 @@
 {
     "name": "git-whiner",
-    "version": "0.2.5",
+    "version": "0.2.6",
     "private": false,
     "description": "A node git watcher intended to nurture better practices and its arduino deamon to make them real.",
     "keywords": [
@@ -27,7 +27,7 @@
         "node": ">= 20"
     },
     "bin": {
-        "watch": "./dist/watch.js",
+        "watch": "nodemon --quiet --exec node ./dist/watch.js",
         "monitor": "./dist/monitor.js"
     },
     "scripts": {
