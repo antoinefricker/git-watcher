@@ -1,13 +1,22 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "target": "es6",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "dist"
-  },
-  "lib": [
-    "es2015"
-  ]
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "target": "es2022",
+        "allowJs": true,
+        "resolveJsonModule": true,
+        "moduleDetection": "force",
+        "isolatedModules": true,
+        "rootDir": "src",
+
+        "module": "NodeNext",
+        "outDir": "dist",
+        "sourceMap": true,
+
+        "declaration": true,
+        "composite": true,
+        "declarationMap": true
+    },
+    "lib": ["es2022"],
+    "include": ["src/**/*"]
 }

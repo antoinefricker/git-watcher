@@ -1,27 +1,41 @@
 {
     "name": "git-whiner",
-    "version": "1.0.0",
+    "version": "0.2.0",
+    "private": false,
     "description": "A node git watcher intended to nurture better practices and its arduino deamon to make them real.",
-    "main": "src/index.ts",
+    "keywords": [
+        "arduino",
+        "git"
+    ],
     "repository": "https://github.com/antoinefricker/git-whiner.git",
     "author": "Antoine Fricker <antoine.fricker@gmail.com>",
     "license": "MIT",
     "dependencies": {
-        "@types/node": "^22.5.2",
-        "@types/serialport": "^8.0.5",
-        "@types/shelljs": "^0.8.15",
         "inquirer": "^10.2.0",
         "nodemon": "^3.1.4",
         "serialport": "^12.0.0",
-        "shelljs": "^0.8.5",
+        "shelljs": "^0.8.5"
+    },
+    "devDependencies": {
+        "@types/node": "^22.5.2",
+        "@types/nodemon": "^1.19.6",
+        "@types/shelljs": "^0.8.15",
         "ts-node": "^10.9.2",
         "typescript": "^5.5.4"
     },
-    "devDependencies": {},
+    "engines": {
+        "node": ">= 20"
+    },
+    "bin": {
+        "watch": "./dist/watch.js",
+        "monitor": "./dist/monitor.js"
+    },
     "scripts": {
         "build": "tsc",
-        "watch": "nodemon --quiet --exec ts-node ./src/gitWhiner.ts",
-        "monitor": "ts-node ./src/arduinoMonitor.ts"
+        "publish": "yarn build && npm publish",
+        "typecheck": "tsc --noEmit",
+        "watch": "nodemon --quiet --exec ts-node ./src/watch.ts",
+        "monitor": "ts-node ./src/monitor.ts"
     },
     "nodemonConfig": {
         "delay": "500",
