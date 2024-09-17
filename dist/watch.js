@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -7,7 +8,7 @@ const fs_1 = __importDefault(require("fs"));
 const constants_1 = require("./constants");
 const GitWhiner_1 = require("./helpers/GitWhiner");
 const ServiceManager_1 = require("./helpers/ServiceManager");
-ServiceManager_1.serviceManager.defineVerbose();
+ServiceManager_1.serviceManager.verbose = true;
 const arnaudTilbian = new GitWhiner_1.GitWhiner();
 const emergency = arnaudTilbian.evaluateEmergencyLevel();
 ServiceManager_1.serviceManager.log(`Write emergency level to: ${emergency.toFixed(0)}`);

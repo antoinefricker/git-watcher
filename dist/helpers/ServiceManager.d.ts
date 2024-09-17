@@ -1,11 +1,12 @@
 declare class ServiceManager {
-    private verbose;
+    private _verbose;
     constructor();
     exitWithError(message: string): void;
     log(message: string): void;
     error(message: string, error: Error): void;
     neverStop(): void;
-    defineVerbose(): void;
+    set verbose(value: boolean);
+    defineVerboseFromArgv(): void;
 }
 export declare const serviceManager: ServiceManager;
 export {};

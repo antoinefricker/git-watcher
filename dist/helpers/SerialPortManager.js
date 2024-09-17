@@ -6,7 +6,7 @@ const ServiceManager_1 = require("./ServiceManager");
 class SerialPortManager {
     _port;
     constructor() { }
-    openPort(portPath, updateCallback) {
+    openPort(portPath) {
         this._port = new serialport_1.SerialPort({
             path: portPath,
             dataBits: 8,
@@ -20,7 +20,6 @@ class SerialPortManager {
                 ServiceManager_1.serviceManager.error('Error while opening port', error);
                 return;
             }
-            updateCallback();
         });
     }
     write(data) {

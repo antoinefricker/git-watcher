@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.serviceManager = void 0;
 const DEFAULT_VERBOSE = false;
 class ServiceManager {
-    verbose = DEFAULT_VERBOSE;
+    _verbose = DEFAULT_VERBOSE;
     constructor() { }
     exitWithError(message) {
         console.error(message);
         process.exit(1);
     }
     log(message) {
-        if (this.verbose) {
+        if (this._verbose) {
             console.log(message);
         }
     }
@@ -20,14 +20,17 @@ class ServiceManager {
     neverStop() {
         process.stdin.resume();
     }
-    defineVerbose() {
-        process.argv.forEach(function (value) {
+    set verbose(value) {
+        this._verbose = value;
+    }
+    defineVerboseFromArgv() {
+        console.log(process.argv);
+        process.argv.forEach((value) => {
             if (value === '--verbose') {
-                this.verbose = true;
-                return;
+                this._verbose = true;
             }
         });
-        this.verbose = false;
+        this._verbose = false;
     }
 }
 exports.serviceManager = new ServiceManager();

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -10,15 +11,16 @@ const ArduinoPortSelector_1 = require("./helpers/ArduinoPortSelector");
 const SerialPortManager_1 = require("./helpers/SerialPortManager");
 let serialportManager;
 const main = async () => {
-    ServiceManager_1.serviceManager.defineVerbose();
+    ServiceManager_1.serviceManager.verbose = true;
     ServiceManager_1.serviceManager.neverStop();
     const portPath = await ArduinoPortSelector_1.ArduinoPortSelector.getArduinoPort();
     ServiceManager_1.serviceManager.log(`Selected port: ${portPath}`);
     serialportManager = new SerialPortManager_1.SerialPortManager();
-    serialportManager.openPort(portPath, update);
+    serialportManager.openPort(portPath);
+    update();
 };
 const update = () => {
-    ServiceManager_1.serviceManager.log('Update arduino monitor');
+    console.log('Update arduino monitor');
     fs_1.default.readFile(constants_1.LOG_FILEPATH, 'utf8', (err, data) => {
         if (err) {
             console.error(err);
@@ -33,4 +35,5 @@ const update = () => {
 const sendData = ({ emergency }) => {
     serialportManager.write(emergency.toFixed(0));
 };
+main();
 //# sourceMappingURL=monitor.js.map

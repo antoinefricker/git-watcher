@@ -1,1 +1,1 @@
-{"version":3,"file":"ArduinoPortSelector.d.ts","sourceRoot":"","sources":["../../src/helpers/ArduinoPortSelector.ts"],"names":[],"mappings":"AAIA,qBAAa,mBAAmB;WACf,cAAc,IAAI,OAAO,CAAC,MAAM,CAAC;CAmCjD"}
+{"version":3,"file":"ArduinoPortSelector.d.ts","sourceRoot":"","sources":["../../src/helpers/ArduinoPortSelector.ts"],"names":[],"mappings":"AAIA,qBAAa,mBAAmB;WACf,cAAc,IAAI,OAAO,CAAC,MAAM,CAAC;CAoCjD"}

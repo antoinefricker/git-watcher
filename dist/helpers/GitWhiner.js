@@ -25,7 +25,7 @@ class GitWhiner {
         }
     }
     getDiffShortstat() {
-        const rawDiff = shelljs_1.default.exec('git diff --shortstat');
+        const rawDiff = shelljs_1.default.exec('git diff --shortstat', { silent: true });
         const [files, insertions, deletions] = rawDiff
             .split(',')
             .map((x) => parseInt(x));
