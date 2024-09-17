@@ -25,15 +25,15 @@ class GitWhiner {
         }
     }
     getDiffShortstat() {
-        const rawDiff = shelljs_1.default.exec('git diff --shortstat', { silent: true });
-        const [files, insertions, deletions] = rawDiff
+        const rawDiff = shelljs_1.default.exec('git diff --shortstat', {
+            silent: !ServiceManager_1.serviceManager.verbose,
+        }).stdout;
+        console.log('rawDiff', rawDiff);
+        const [files = 0, insertions = 0, deletions = 0] = rawDiff
             .split(',')
-            .map((x) => parseInt(x));
-        return {
-            files: files ?? 0,
-            insertions: insertions ?? 0,
-            deletions: deletions ?? 0,
-        };
+            .map((x) => parseInt(x))
+            .map((x) => (isNaN(x) ? 0 : x));
+        return { files, insertions, deletions };
     }
 }
 exports.GitWhiner = GitWhiner;

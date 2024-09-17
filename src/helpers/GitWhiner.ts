@@ -23,17 +23,16 @@ export class GitWhiner {
     }
 
     private getDiffShortstat(): DiffShortstatData {
-        const rawDiff = shell.exec('git diff --shortstat', { silent: true });
-
-        const [files, insertions, deletions] = rawDiff
+        const rawDiff = shell.exec('git diff --shortstat', {
+            silent: !serviceManager.verbose,
+        }).stdout;
+        console.log('rawDiff', rawDiff);
+        const [files = 0, insertions = 0, deletions = 0] = rawDiff
             .split(',')
-            .map((x: string) => parseInt(x));
+            .map((x: string) => parseInt(x))
+            .map((x: number) => (isNaN(x) ? 0 : x));
 
-        return {
-            files: files ?? 0,
-            insertions: insertions ?? 0,
-            deletions: deletions ?? 0,
-        };
+        return { files, insertions, deletions };
     }
 }
 
