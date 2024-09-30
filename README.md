@@ -2,16 +2,65 @@
 
 > A node git watcher intended to nurture better practices and its arduino evil materialization to make them real.
 
-![evil arduino uno board](./arduino/board.png)
+## Demo
+
+[![first board code demo](https://img.youtube.com/vi/EF2FVzAF1sc/0.jpg)](https://www.youtube.com/watch?v=EF2FVzAF1sc)
+
+## Installation
+
+> **Disclaimer** Requires an arduino hardware whose schema is provider in the [arduino section](#arduino-info)
+
+### Install the package
+
+`yarn add git-whiner -D`
+
+### Add the scripts to your `package.json`:
+
+-   `git-whiner-watch` will watch git status changes
+-   `git-whiner-monitor` will send them to the arduino board
+
+```
+{
+  "name": "git-whiner-client",
+  //...
+  "scripts": {
+    "git-whiner-watch": "yarn nodemon  --quiet  --exec yarn watch",
+    "git-whiner-monitor": "yarn monitor"
+  },
+  //...
+}
+```
 
 ## Scripts
 
-`yarn dev`
+### Build project
 
 `yarn build`
 
-## arduino steps
+### Watch git status changes
 
--   [Arduino circuit demo in POC](https://github.com/antoinefricker/git-whiner/commit/f8ea6b7ccfd133c25d61acd39f4cd81b9e3d577e) (proof of concept)
+`yarn watch`
 
-[![first board code demo](https://img.youtube.com/vi/EF2FVzAF1sc/0.jpg)](https://www.youtube.com/watch?v=EF2FVzAF1sc)
+### Monitor git status through the arduino board
+
+`yarn monitor`
+
+## Arduino info
+
+### Hardware requirements
+
+-   Arduino Uno
+-   passive buzzer
+-   3 leds (ideally green, orange, red)
+-   2 potentiometers
+-   3 10KΩ resistances
+-   a serial cable to connect to your computer
+-   a bunch of jump wires
+
+### Boards schemas
+
+Sketchs can be found in the [arduino folder](https://github.com/antoinefricker/git-whiner/tree/main/arduino/boards)
+
+### Sketches
+
+Sketchs can be found in the [arduino folder](https://github.com/antoinefricker/git-whiner/tree/main/arduino/sketches)

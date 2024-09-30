@@ -22,16 +22,14 @@ const main = async () => {
 };
 
 const update = (): void => {
-    console.log('Update arduino monitor');
-
     fs.readFile(LOG_FILEPATH, 'utf8', (err, data) => {
         if (err) {
-            console.error(err);
+            serviceManager.error('Unable to readfile', err);
             return;
         }
 
         const emergency = parseInt(data);
-        serviceManager.log(`Reading from log file: emergency: ${emergency}`);
+        serviceManager.log(`Update arduino monitor | emergency: ${emergency}`);
 
         sendData({ emergency: parseInt(data) });
     });
