@@ -12,7 +12,7 @@ export class SerialPortManager {
             parity: 'none',
             stopBits: 1,
             baudRate: 9600,
-            autoOpen: false,
+            autoOpen: true,
         });
         this._port.on('open', async (error) => {
             if (error) {

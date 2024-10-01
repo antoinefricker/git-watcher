@@ -31,7 +31,7 @@ const update = (): void => {
         const emergency = parseInt(data);
         serviceManager.log(`Update arduino monitor | emergency: ${emergency}`);
 
-        sendData({ emergency: parseInt(data) });
+        sendData({ emergency });
     });
     setTimeout(update, 2000);
 };
