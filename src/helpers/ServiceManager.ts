@@ -29,12 +29,12 @@ class ServiceManager {
     }
 
     defineVerboseFromArgv(): void {
-        console.log(process.argv);
         process.argv.forEach((value) => {
             if (value === '--verbose') {
                 this._verbose = true;
             }
         });
+        serviceManager.log(`process.argv: ${process.argv.join(', ')}`);
         this._verbose = false;
     }
 }

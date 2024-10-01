@@ -9,9 +9,9 @@ export class GitWhiner {
     evaluateEmergencyLevel() {
         const diffShortstat: DiffShortstatData = this.getDiffShortstat();
         let emergency = 0;
-        emergency += Math.floor(diffShortstat.files / 4);
-        emergency += Math.floor(diffShortstat.insertions / 35);
-        emergency += Math.floor(diffShortstat.deletions / 45);
+        emergency += diffShortstat.files / 3;
+        emergency += diffShortstat.insertions / 35;
+        emergency += diffShortstat.deletions / 45;
         return Math.min(10, emergency);
     }
 
@@ -22,16 +22,59 @@ export class GitWhiner {
         }
     }
 
-    private getDiffShortstat(): DiffShortstatData {
-        const rawDiff = shell.exec('git diff --shortstat', {
+    private getCurrentBranch(): string {
+        const branch = shell.exec('git rev-parse --abbrev-ref HEAD', {
             silent: !serviceManager.verbose,
         }).stdout;
-        console.log('rawDiff', rawDiff);
+        return branch.trim();
+    }
+
+    private getDiffShortstat(): DiffShortstatData {
+        // pushed changes
+        const currentBranch = this.getCurrentBranch();
+
+        const pushedRawDiff = shell.exec(
+            `git diff main...${currentBranch} --shortstat`,
+            {
+                silent: !serviceManager.verbose,
+            },
+        ).stdout;
+        const pushedShortstatData = this.parseRawDiff(pushedRawDiff);
+        serviceManager.log(
+            'pushedShortstatData: ' +
+                JSON.stringify(pushedShortstatData, null, 2),
+        );
+
+        // unstaged changes
+        const unstagedRawDiff = shell.exec('git diff --shortstat', {
+            silent: !serviceManager.verbose,
+        }).stdout;
+        const unstagedShortstatData = this.parseRawDiff(unstagedRawDiff);
+        serviceManager.log(
+            'unstagedShortstatData: ' +
+                JSON.stringify(unstagedShortstatData, null, 2),
+        );
+
+        // all changes
+        const allShortstatData: DiffShortstatData = {
+            files: pushedShortstatData.files + unstagedShortstatData.files,
+            insertions:
+                pushedShortstatData.insertions +
+                unstagedShortstatData.insertions,
+            deletions:
+                pushedShortstatData.deletions + unstagedShortstatData.deletions,
+        };
+        serviceManager.log(
+            'allShortstatData: ' + JSON.stringify(allShortstatData, null, 2),
+        );
+        return allShortstatData;
+    }
+
+    private parseRawDiff(rawDiff: string): DiffShortstatData {
         const [files = 0, insertions = 0, deletions = 0] = rawDiff
             .split(',')
             .map((x: string) => parseInt(x))
             .map((x: number) => (isNaN(x) ? 0 : x));
-
         return { files, insertions, deletions };
     }
 }
